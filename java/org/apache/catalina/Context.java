@@ -58,6 +58,7 @@ import org.apache.tomcat.util.http.CookieProcessor;
  *
  * @author Craig R. McClanahan
  */
+//一个context就是一个web应用
 public interface Context extends Container, ContextBind {
 
 

@@ -164,8 +164,26 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
-
       </Host>
+
+        <!--测试的webapps-->
+        <!--访问路径：http://test.com:8080/hello/hello.html-->
+        <Host name="test.com"  appBase="mytest"
+              unpackWARs="true" autoDeploy="true">
+
+            <!-- SingleSignOn valve, share authentication between web applications
+                 Documentation at: /docs/config/valve.html -->
+            <!--
+            <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+            -->
+
+            <!-- Access log processes all example.
+                 Documentation at: /docs/config/valve.html
+                 Note: The pattern used is equivalent to using pattern="common" -->
+            <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+                   prefix="localhost_access_log" suffix=".txt"
+                   pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+        </Host>
     </Engine>
   </Service>
 </Server>
