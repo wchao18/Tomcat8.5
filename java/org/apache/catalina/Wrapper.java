@@ -46,6 +46,7 @@ import javax.servlet.UnavailableException;
  *
  * @author Craig R. McClanahan
  */
+//每个servlet被封装一个Wrapper
 public interface Wrapper extends Container {
 
     /**

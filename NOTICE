@@ -49,3 +49,6 @@ The original XML Schemas for Java EE Deployment Descriptors:
 
 may be obtained from:
 http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/index.html
+
+JVM参数
+-Duser.language=en -Duser.region=US -Dfile.encoding=UTF-8

@@ -43,6 +43,7 @@ import java.util.regex.Pattern;
  *
  * @author Craig R. McClanahan
  */
+//每一个host代表一个虚拟域名映射系统，根据host可以进行虚拟主机的隔离
 public interface Host extends Container {
 
 

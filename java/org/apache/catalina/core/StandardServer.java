@@ -64,6 +64,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
     private static final Log log = LogFactory.getLog(StandardServer.class);
 
 
+
     // ------------------------------------------------------------ Constructor
 
 
@@ -813,7 +814,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         onameMBeanFactory = register(factory, "type=MBeanFactory");
 
         // Register the naming resources
-        globalNamingResources.init();
+        globalNamingResources.init();//JNDI初始化
 
         // Populate the extension validator with JARs from common and shared
         // class loaders
@@ -845,7 +846,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         }
         // Initialize our defined Services
         for (Service service : services) {
-            service.init();
+            service.init(); //所有的Service初始化
         }
     }
 

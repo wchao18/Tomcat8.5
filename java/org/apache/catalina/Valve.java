@@ -114,6 +114,7 @@ public interface Valve {
      * @exception ServletException if a servlet error occurs, or is thrown
      *  by a subsequently invoked Valve, Filter, or Servlet
      */
+    //阀门的功能在此定义
     public void invoke(Request request, Response response)
         throws IOException, ServletException;
 

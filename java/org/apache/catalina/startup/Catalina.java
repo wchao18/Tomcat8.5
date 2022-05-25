@@ -550,6 +550,7 @@ public class Catalina {
         File file = null;
         try {
             try {
+                //解析 conf/server.xml
                 file = configFile();
                 inputStream = new FileInputStream(file);
                 inputSource = new InputSource(file.toURI().toURL().toString());
@@ -608,6 +609,7 @@ public class Catalina {
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
+                //解析server.xml文件
                 digester.parse(inputSource);
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " +
@@ -636,6 +638,7 @@ public class Catalina {
 
         // Start the new server
         try {
+            //服务器执行初始化
             getServer().init();
         } catch (LifecycleException e) {
             if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE")) {
@@ -685,6 +688,7 @@ public class Catalina {
 
         // Start the new server
         try {
+            //服务器启动
             getServer().start();
         } catch (LifecycleException e) {
             log.fatal(sm.getString("catalina.serverStartFail"), e);

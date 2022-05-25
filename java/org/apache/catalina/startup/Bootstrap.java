@@ -248,6 +248,7 @@ public final class Bootstrap {
      */
     public void init() throws Exception {
 
+        //初始化三个类加载器
         initClassLoaders();
 
         Thread.currentThread().setContextClassLoader(catalinaLoader);
@@ -271,7 +272,7 @@ public final class Bootstrap {
         Method method =
             startupInstance.getClass().getMethod(methodName, paramTypes);
         method.invoke(startupInstance, paramValues);
-
+        //catalina的后台线程
         catalinaDaemon = startupInstance;
     }
 
@@ -294,6 +295,7 @@ public final class Bootstrap {
             param = new Object[1];
             param[0] = arguments;
         }
+        //执行catalina的load方法
         Method method =
             catalinaDaemon.getClass().getMethod(methodName, paramTypes);
         if (log.isDebugEnabled()) {
@@ -432,6 +434,7 @@ public final class Bootstrap {
      *
      * @param args Command line arguments to be processed
      */
+    //tomcat启动的入口
     public static void main(String args[]) {
 
         synchronized (daemonLock) {
@@ -439,6 +442,7 @@ public final class Bootstrap {
                 // Don't set daemon until init() has completed
                 Bootstrap bootstrap = new Bootstrap();
                 try {
+                    //初始化
                     bootstrap.init();
                 } catch (Throwable t) {
                     handleThrowable(t);
@@ -469,7 +473,8 @@ public final class Bootstrap {
                 daemon.stop();
             } else if (command.equals("start")) {
                 daemon.setAwait(true);
-                daemon.load(args);
+                //反射执行catalina的load方法
+                daemon.load(args);//服务器组件初始化，在此绑定了NIOServerSocket的端口，准备接受数据
                 daemon.start();
                 if (null == daemon.getServer()) {
                     System.exit(1);

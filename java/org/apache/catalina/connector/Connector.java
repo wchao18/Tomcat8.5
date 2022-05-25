@@ -1072,7 +1072,7 @@ public class Connector extends LifecycleMBeanBase  {
         }
 
         try {
-            protocolHandler.init();
+            protocolHandler.init();//协议处理器初始化,比如处理http请求
         } catch (Exception e) {
             throw new LifecycleException(
                     sm.getString("coyoteConnector.protocolHandlerInitializationFailed"), e);

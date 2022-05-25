@@ -921,7 +921,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
         Container children[] = findChildren();
         List<Future<Void>> results = new ArrayList<>();
         for (Container child : children) {
-            results.add(startStopExecutor.submit(new StartChild(child)));
+            results.add(startStopExecutor.submit(new StartChild(child)));//多个host主机一起启动
         }
 
         MultiThrowable multiThrowable = null;
@@ -945,7 +945,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
         // Start the Valves in our pipeline (including the basic), if any
         if (pipeline instanceof Lifecycle) {
-            ((Lifecycle) pipeline).start();
+            ((Lifecycle) pipeline).start();//管道启动
         }
 
 

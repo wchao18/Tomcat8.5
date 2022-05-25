@@ -602,8 +602,9 @@ public class Http11Processor extends AbstractProcessor {
                 }
             }
 
+            //最大活跃请求数
             if (maxKeepAliveRequests == 1) {
-                keepAlive = false;
+                keepAlive = false; //会在响应头上返回Connection:close
             } else if (maxKeepAliveRequests > 0 &&
                     socketWrapper.decrementKeepAlive() <= 0) {
                 keepAlive = false;

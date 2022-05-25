@@ -133,6 +133,7 @@ public abstract class LifecycleBase implements Lifecycle {
 
         try {
             setStateInternal(LifecycleState.INITIALIZING, null, false);
+            //初始化的模板方法
             initInternal();
             setStateInternal(LifecycleState.INITIALIZED, null, false);
         } catch (Throwable t) {
@@ -155,7 +156,7 @@ public abstract class LifecycleBase implements Lifecycle {
      */
     @Override
     public final synchronized void start() throws LifecycleException {
-
+         //组件状态流程判断
         if (LifecycleState.STARTING_PREP.equals(state) || LifecycleState.STARTING.equals(state) ||
                 LifecycleState.STARTED.equals(state)) {
 
@@ -180,6 +181,7 @@ public abstract class LifecycleBase implements Lifecycle {
 
         try {
             setStateInternal(LifecycleState.STARTING_PREP, null, false);
+            //启动模板方法，具体给组件自己实现
             startInternal();
             if (state.equals(LifecycleState.FAILED)) {
                 // This is a 'controlled' failure. The component put itself into the
@@ -253,7 +255,7 @@ public abstract class LifecycleBase implements Lifecycle {
             } else {
                 setStateInternal(LifecycleState.STOPPING_PREP, null, false);
             }
-
+            //停止的模板方法
             stopInternal();
 
             // Shouldn't be necessary but acts as a check that sub-classes are
@@ -318,6 +320,7 @@ public abstract class LifecycleBase implements Lifecycle {
 
         try {
             setStateInternal(LifecycleState.DESTROYING, null, false);
+            //销毁的模板方法
             destroyInternal();
             setStateInternal(LifecycleState.DESTROYED, null, false);
         } catch (Throwable t) {
