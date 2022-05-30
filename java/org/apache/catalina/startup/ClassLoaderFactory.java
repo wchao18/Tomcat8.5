@@ -303,10 +303,10 @@ public final class ClassLoaderFactory {
 
 
     public enum RepositoryType {
-        DIR,
-        GLOB,
-        JAR,
-        URL
+        DIR,//目录下的资源
+        GLOB,//目录下所有的jar包资源，仅仅是.jar后缀结尾的
+        JAR,//单个jar包资源
+        URL//从URL中获取的jar包资源
     }
 
     public static class Repository {

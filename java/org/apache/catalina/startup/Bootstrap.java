@@ -250,7 +250,7 @@ public final class Bootstrap {
 
         //初始化三个类加载器
         initClassLoaders();
-
+        //设置线程上下文的类加载器
         Thread.currentThread().setContextClassLoader(catalinaLoader);
 
         SecurityClassLoad.securityClassLoad(catalinaLoader);
